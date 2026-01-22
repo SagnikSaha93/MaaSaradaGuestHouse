@@ -74,10 +74,16 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .nav-link:hover {
             color: var(--primary);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Hero */
@@ -470,12 +476,107 @@
             color: #065f46;
         }
 
+        .contact-section {
+            background: white;
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(217, 119, 6, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            margin: 0.25rem 0;
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+        }
+
         .footer {
             background: var(--text);
             color: white;
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
         }
 
         @media (max-width: 768px) {
@@ -567,9 +668,56 @@
         </div>
     </div>
 
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="contact-title">Get In Touch</h2>
+            <p class="contact-subtitle">We're here to help you plan your perfect stay</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-label">Call Us</div>
+                    <div class="contact-value">
+                        <a href="tel:+919999912345" class="contact-link">+91 99999 12345</a><br>
+                        <a href="tel:+919999912345" class="contact-link">+91 99999 12345</a>
+                    </div>
+                    <a href="https://wa.me/919999912345" target="_blank" class="whatsapp-btn">
+                        💬 WhatsApp Us
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-label">Email Us</div>
+                    <div class="contact-value">
+                        <a href="mailto:maasaradaguesthouse@gmail.com" class="contact-link">
+                            maasaradaguesthouse@gmail.com
+                        </a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+                        We typically respond within 24 hours
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-label">Booking Hours</div>
+                    <div class="contact-value">
+                        Mon - Sun<br>
+                        9:00 AM - 8:00 PM
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+                        24/7 check-in available with advance notice
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
-        <p>&copy; 2026 Maa Sarada Guest House. All rights reserved.</p>
-        <p>📞 Contact us for bookings and inquiries</p>
+        <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">&copy; 2026 Maa Sarada Guest House. All rights reserved.</p>
+        <p style="opacity: 0.9;">📍 Your comfort is our priority</p>
     </footer>
 
     <script>
