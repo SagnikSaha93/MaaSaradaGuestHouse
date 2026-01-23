@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maa Sarada Guest House - Room Booking</title>
+    <title>Maa Sarada Guest House</title>
     <style>
         * {
             margin: 0;
@@ -12,401 +13,497 @@
         }
 
         :root {
-            --primary: #d97706;
-            --primary-hover: #b45309;
-            --secondary: #059669;
-            --danger: #dc2626;
-            --success: #10b981;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --bg-gray: #fef3c7;
-            --bg-light: #fffbeb;
+            --cream: #FAF8F3;
+            --beige: #E8E3D9;
+            --sand: #D4CAB8;
+            --charcoal: #2B2B2B;
+            --soft-black: #1A1A1A;
+            --gold: #C9A875;
+            --white: #FFFFFF;
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--charcoal);
+            line-height: 1.7;
+            background: var(--cream);
         }
 
-        /* Navigation */
         .nav {
-            background: white;
-            border-bottom: 2px solid var(--primary);
-            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--beige);
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-logo::before {
-            content: "🏠";
-            font-size: 1.8rem;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--soft-black);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .nav-link {
-            color: var(--text);
+            color: var(--charcoal);
             text-decoration: none;
-            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
             transition: color 0.3s;
             cursor: pointer;
         }
 
         .nav-link:hover {
-            color: var(--primary);
+            color: var(--gold);
         }
 
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M50 10l5 15h16l-13 10 5 15-13-10-13 10 5-15-13-10h16z" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            opacity: 0.3;
+            height: 75vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+                linear-gradient(135deg, #C9A875 0%, #B89968 100%);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            padding: 0 2rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
         }
 
-        .hero p {
-            font-size: 1.4rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
+        .hero-divider {
+            width: 80px;
+            height: 1px;
+            background: var(--white);
+            margin: 2rem auto;
+            opacity: 0.7;
         }
 
         .hero-subtitle {
-            font-style: italic;
-            margin-top: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
+        .rooms-section {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 1.5rem;
-            background: var(--bg-light);
+            padding: 8rem 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--soft-black);
+            letter-spacing: 2px;
             margin-bottom: 1rem;
-            color: var(--primary);
         }
 
         .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 3rem;
             font-size: 1.1rem;
+            color: var(--charcoal);
+            font-weight: 300;
+            opacity: 0.8;
         }
 
-        /* Rooms Grid */
         .rooms-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
         }
 
-        /* Room Card */
         .room-card {
-            background: white;
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            border: 2px solid transparent;
         }
 
         .room-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(217, 119, 6, 0.2);
-            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
         }
 
-        .room-image {
+        .room-card-image {
             width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, var(--bg-gray), var(--bg-light));
+            height: 320px;
+            background: linear-gradient(135deg, var(--beige), var(--sand));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             position: relative;
         }
 
-        .badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--danger);
-            color: white;
-            padding: 0.375rem 0.875rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+        .room-card-content {
+            padding: 2.5rem;
         }
 
-        .room-content {
-            padding: 1.5rem;
-        }
-
-        .room-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--primary);
-        }
-
-        .room-description {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.6;
-        }
-
-        .room-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            padding: 1rem;
-            background: var(--bg-light);
-            border-radius: 8px;
+        .room-card-title {
+            font-size: 1.6rem;
+            font-weight: 400;
             margin-bottom: 1rem;
-            border-left: 3px solid var(--primary);
+            color: var(--soft-black);
+            letter-spacing: 1px;
         }
 
-        .room-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text);
-            font-weight: 500;
+        .room-card-description {
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.85;
         }
 
-        .room-footer {
+        .room-card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 1rem;
-            border-top: 2px solid var(--bg-gray);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--beige);
         }
 
-        .price {
+        .room-price {
             display: flex;
             flex-direction: column;
         }
 
         .price-label {
             font-size: 0.75rem;
-            color: var(--text-light);
             text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+            opacity: 0.6;
         }
 
         .price-amount {
             font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 1px;
         }
 
         .price-period {
             font-size: 0.85rem;
-            color: var(--text-light);
+            color: var(--charcoal);
+            opacity: 0.6;
         }
 
-        .btn {
-            padding: 0.75rem 1.5rem;
+        .btn-view {
+            padding: 0.9rem 2rem;
+            background: var(--soft-black);
+            color: var(--white);
             border: none;
             border-radius: 8px;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
+        .btn-view:hover {
+            background: var(--gold);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(217, 119, 6, 0.3);
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1000;
-            padding: 1rem;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            padding: 2rem;
             overflow-y: auto;
+            backdrop-filter: blur(8px);
         }
 
         .modal.active {
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 2rem;
+            padding-top: 3rem;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal-content {
-            background: white;
-            border-radius: 12px;
-            max-width: 900px;
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 1100px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem;
-            border-bottom: 2px solid var(--primary);
-            background: var(--bg-light);
+            position: relative;
+            padding: 3rem 3rem 2rem;
+            border-bottom: 1px solid var(--beige);
         }
 
-        .modal-header h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
+        .modal-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--soft-black);
+            letter-spacing: 2px;
         }
 
         .modal-close {
-            background: var(--danger);
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--beige);
             border: none;
-            font-size: 1.5rem;
-            color: white;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            cursor: pointer;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-close:hover {
-            background: #b91c1c;
+            background: var(--soft-black);
+            color: var(--white);
             transform: rotate(90deg);
         }
 
         .modal-body {
-            padding: 2rem;
+            padding: 3rem;
         }
 
-        .gallery {
-            margin-bottom: 2rem;
-        }
-
-        .gallery-main {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, var(--bg-gray), var(--bg-light));
+        .carousel {
+            position: relative;
+            height: 500px;
+            background: var(--beige);
             border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .carousel-track {
+            position: relative;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
-            margin-bottom: 1rem;
-            border: 3px solid var(--primary);
+            font-size: 8rem;
+            background: linear-gradient(135deg, var(--beige), var(--sand));
         }
 
-        .section-heading {
-            font-size: 1.6rem;
-            margin: 2rem 0 1rem;
-            color: var(--primary);
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--soft-black);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .description-text {
-            color: var(--text);
-            line-height: 1.8;
-            font-size: 1rem;
+        .carousel-btn:hover {
+            background: var(--white);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 1.5rem;
+        }
+
+        .carousel-btn.next {
+            right: 1.5rem;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--white);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .details-section {
+            margin-bottom: 3rem;
+        }
+
+        .details-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--soft-black);
+            letter-spacing: 1px;
             margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--beige);
+        }
+
+        .room-description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            opacity: 0.9;
+        }
+
+        .room-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .spec-item:hover {
+            background: var(--beige);
+        }
+
+        .spec-icon {
+            font-size: 2rem;
+        }
+
+        .spec-content {
+            flex: 1;
+        }
+
+        .spec-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+            opacity: 0.6;
+            margin-bottom: 0.3rem;
+        }
+
+        .spec-value {
+            font-size: 1.1rem;
+            color: var(--soft-black);
         }
 
         .amenities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 1rem;
-            margin-bottom: 2rem;
         }
 
         .amenity-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            background: var(--bg-light);
-            border-radius: 8px;
-            border-left: 3px solid var(--secondary);
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--cream);
+            border-radius: 10px;
             transition: all 0.3s;
         }
 
         .amenity-item:hover {
-            background: var(--bg-gray);
+            background: var(--beige);
             transform: translateX(4px);
         }
 
@@ -414,142 +511,170 @@
             font-size: 1.5rem;
         }
 
-        .booking-form {
-            background: var(--bg-light);
-            padding: 2rem;
+        .amenity-name {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        .booking-section {
+            background: var(--cream);
+            padding: 2.5rem;
             border-radius: 12px;
-            border: 2px solid var(--primary);
+            border: 1px solid var(--beige);
+        }
+
+        .booking-price {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--beige);
+        }
+
+        .booking-price-amount {
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .booking-price-period {
+            font-size: 1rem;
+            color: var(--charcoal);
+            opacity: 0.7;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.5rem;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
-        .form-group label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--primary);
+        .form-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+            opacity: 0.7;
         }
 
         .form-input {
-            padding: 0.75rem;
-            border: 2px solid var(--border);
+            padding: 1rem;
+            border: 1px solid var(--beige);
             border-radius: 8px;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            background: var(--white);
             transition: all 0.3s;
         }
 
         .form-input:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 168, 117, 0.1);
         }
 
-        .btn-large {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .availability-result {
+        .btn-book {
             padding: 1.2rem;
+            background: var(--soft-black);
+            color: var(--white);
+            border: none;
             border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
             margin-top: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 600;
         }
 
-        .availability-result.available {
-            background: #d1fae5;
-            border: 2px solid var(--success);
-            color: #065f46;
+        .btn-book:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 168, 117, 0.3);
+        }
+
+        .availability-message {
+            padding: 1.5rem;
+            background: #E8F5E9;
+            border: 1px solid #81C784;
+            border-radius: 8px;
+            color: #2E7D32;
+            text-align: center;
+            margin-top: 1rem;
+            animation: fadeIn 0.3s;
         }
 
         .contact-section {
-            background: white;
-            padding: 4rem 2rem;
-            margin-top: 3rem;
+            background: var(--white);
+            padding: 8rem 3rem;
         }
 
         .contact-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .contact-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .contact-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
         .contact-card {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s;
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 16px;
             text-align: center;
+            transition: all 0.3s;
         }
 
         .contact-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(217, 119, 6, 0.2);
+            box-shadow: var(--shadow-soft);
         }
 
         .contact-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-label {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+            opacity: 0.7;
+            margin-bottom: 1rem;
         }
 
         .contact-value {
             font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 0.5rem;
+            color: var(--soft-black);
+            margin-bottom: 1.5rem;
         }
 
         .contact-link {
-            color: var(--text);
+            color: var(--soft-black);
             text-decoration: none;
             transition: color 0.3s;
-            display: inline-block;
-            margin: 0.25rem 0;
         }
 
         .contact-link:hover {
-            color: var(--primary);
-            text-decoration: underline;
+            color: var(--gold);
         }
 
         .whatsapp-btn {
@@ -558,41 +683,71 @@
             gap: 0.5rem;
             background: #25D366;
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.9rem 1.8rem;
             border-radius: 8px;
             text-decoration: none;
-            margin-top: 1rem;
-            font-weight: 600;
             transition: all 0.3s;
+            margin-top: 1rem;
         }
 
         .whatsapp-btn:hover {
             background: #20BA5A;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
         }
 
         .footer {
-            background: var(--text);
-            color: white;
+            background: var(--soft-black);
+            color: var(--white);
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
-            .rooms-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .gallery-main { height: 300px; font-size: 4rem; }
-            .section-title { font-size: 2rem; }
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .rooms-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .carousel {
+                height: 350px;
+            }
+
+            .carousel-slide {
+                font-size: 5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                padding: 4rem 1.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <nav class="nav">
         <div class="nav-container">
-            <div class="nav-logo">Maa Sarada Guest House</div>
+            <div class="nav-logo">Maa Sarada</div>
             <div class="nav-links">
                 <a href="#rooms" class="nav-link">Rooms</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -600,269 +755,369 @@
         </div>
     </nav>
 
-    <header class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1>🙏 Maa Sarada Guest House</h1>
-            <p>Experience comfort, peace, and hospitality</p>
-            <p class="hero-subtitle">Your home away from home</p>
+            <h1>Maa Sarada Guest House</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-subtitle">Where comfort meets tradition</p>
         </div>
-    </header>
+    </section>
 
-    <section class="container" id="rooms">
-        <h2 class="section-title">Our Rooms</h2>
-        <p class="section-subtitle">Choose from our comfortable and well-appointed rooms</p>
+    <section class="rooms-section" id="rooms">
+        <div class="section-header">
+            <h2 class="section-title">Our Rooms</h2>
+            <p class="section-subtitle">Thoughtfully designed spaces for your comfort</p>
+        </div>
         <div class="rooms-grid" id="roomsGrid"></div>
     </section>
 
-    <!-- Modal for Room Details -->
     <div class="modal" id="roomModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalRoomName"></h2>
+                <h2 class="modal-title" id="modalRoomName"></h2>
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="gallery">
-                    <div class="gallery-main" id="modalRoomImage"></div>
-                </div>
-                
-                <h3 class="section-heading">About This Room</h3>
-                <p class="description-text" id="modalRoomDescription"></p>
-                
-                <div class="room-details" style="margin: 2rem 0;">
-                    <div class="room-info">
-                        <span>👥</span>
-                        <span id="modalRoomCapacity"></span>
-                    </div>
-                    <div class="room-info">
-                        <span>📏</span>
-                        <span id="modalRoomSize"></span>
-                    </div>
-                    <div class="room-info">
-                        <span>🛏️</span>
-                        <span id="modalRoomBed"></span>
-                    </div>
+                <div class="carousel" id="carousel">
+                    <div class="carousel-track" id="carouselTrack"></div>
+                    <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
+                    <button class="carousel-btn next" onclick="nextSlide()">›</button>
+                    <div class="carousel-indicators" id="indicators"></div>
                 </div>
 
-                <h3 class="section-heading">Room Amenities</h3>
-                <div class="amenities-grid" id="modalAmenities"></div>
+                <div class="details-section">
+                    <h3 class="details-title">About This Room</h3>
+                    <p class="room-description" id="modalDescription"></p>
+                </div>
 
-                <h3 class="section-heading">Book This Room</h3>
-                <div class="booking-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Check-in Date</label>
-                            <input type="date" class="form-input" id="checkIn">
+                <div class="room-specs" id="modalSpecs"></div>
+
+                <div class="details-section">
+                    <h3 class="details-title">Amenities</h3>
+                    <div class="amenities-grid" id="modalAmenities"></div>
+                </div>
+
+                <div class="details-section">
+                    <h3 class="details-title">Book Your Stay</h3>
+                    <div class="booking-section">
+                        <div class="booking-price">
+                            <div class="booking-price-amount" id="modalPrice"></div>
+                            <div class="booking-price-period">per night</div>
                         </div>
-                        <div class="form-group">
-                            <label>Check-out Date</label>
-                            <input type="date" class="form-input" id="checkOut">
-                        </div>
+                        <form class="booking-form" onsubmit="checkAvailability(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Check-in</label>
+                                    <input type="date" class="form-input" id="checkIn" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Check-out</label>
+                                    <input type="date" class="form-input" id="checkOut" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-book">Check Availability</button>
+                            <div id="availabilityResult"></div>
+                        </form>
                     </div>
-                    <button class="btn btn-primary btn-large" onclick="checkAvailability()">
-                        Check Availability & Book
-                    </button>
-                    <div id="availabilityResult"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="contact-container">
-            <h2 class="contact-title">Get In Touch</h2>
-            <p class="contact-subtitle">We're here to help you plan your perfect stay</p>
-            
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">We're here to make your stay perfect</p>
+            </div>
+
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-icon">📞</div>
-                    <div class="contact-label">Call Us</div>
+                    <div class="contact-label">Phone</div>
                     <div class="contact-value">
                         <a href="tel:+919999912345" class="contact-link">+91 99999 12345</a><br>
                         <a href="tel:+919999912345" class="contact-link">+91 99999 12345</a>
                     </div>
                     <a href="https://wa.me/919999912345" target="_blank" class="whatsapp-btn">
-                        💬 WhatsApp Us
+                        💬 WhatsApp
                     </a>
                 </div>
 
                 <div class="contact-card">
                     <div class="contact-icon">✉️</div>
-                    <div class="contact-label">Email Us</div>
+                    <div class="contact-label">Email</div>
                     <div class="contact-value">
                         <a href="mailto:maasaradaguesthouse@gmail.com" class="contact-link">
                             maasaradaguesthouse@gmail.com
                         </a>
                     </div>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
-                        We typically respond within 24 hours
-                    </p>
                 </div>
 
                 <div class="contact-card">
                     <div class="contact-icon">🕒</div>
-                    <div class="contact-label">Booking Hours</div>
+                    <div class="contact-label">Hours</div>
                     <div class="contact-value">
-                        Mon - Sun<br>
-                        9:00 AM - 8:00 PM
+                        Mon - Sun<br>9:00 AM - 8:00 PM
                     </div>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
-                        24/7 check-in available with advance notice
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">&copy; 2026 Maa Sarada Guest House. All rights reserved.</p>
-        <p style="opacity: 0.9;">📍 Your comfort is our priority</p>
+        <p>&copy; 2026 Maa Sarada Guest House. All rights reserved.</p>
     </footer>
 
     <script>
-        // Room data for Maa Sarada Guest House
         const rooms = [
             {
                 id: 1,
                 name: "Deluxe AC Room",
-                description: "Spacious air-conditioned room perfect for families or groups. Features comfortable bedding, attached bathroom with hot water, and all modern amenities for a pleasant stay.",
-                price: 1500,
-                capacity: 4,
-                size: 400,
+                shortDesc: "Spacious air-conditioned comfort for families",
+                description: "Indulge in our spacious air-conditioned room, thoughtfully designed for families and groups. This elegant room features comfortable bedding, modern amenities, and an attached bathroom with 24-hour hot water. Perfect for those seeking a premium experience with contemporary comforts.",
+                price: "₹1,500",
+                capacity: "4 guests",
+                size: "400 sq ft",
                 bed: "2 Double Beds",
                 icon: "🛏️",
-                available: true,
-                amenities: ["Air Conditioning ❄️", "Hot Water 🚿", "Free WiFi 📶", "TV 📺", "Attached Bathroom 🚽", "Room Service 🍽️"]
+                images: ["🛏️", "🏠", "🌅"],
+                amenities: [
+                    { name: "Air Conditioning", icon: "❄️" },
+                    { name: "Hot Water", icon: "🚿" },
+                    { name: "Free WiFi", icon: "📶" },
+                    { name: "Television", icon: "📺" },
+                    { name: "Attached Bathroom", icon: "🚽" },
+                    { name: "Room Service", icon: "🍽️" }
+                ]
             },
             {
                 id: 2,
                 name: "Standard Non-AC Room",
-                description: "Comfortable and budget-friendly room with fan, perfect for solo travelers or couples. Clean, well-maintained with all basic amenities needed for a comfortable stay.",
-                price: 800,
-                capacity: 2,
-                size: 250,
+                shortDesc: "Comfortable budget-friendly accommodation",
+                description: "Experience comfort without compromise in our well-appointed standard room. Featuring natural ventilation, comfortable bedding, and essential amenities, this room offers excellent value for solo travelers and couples. Clean, peaceful, and designed for a restful stay.",
+                price: "₹800",
+                capacity: "2 guests",
+                size: "250 sq ft",
                 bed: "1 Double Bed",
                 icon: "🪟",
-                available: true,
-                amenities: ["Ceiling Fan 🌀", "Hot Water 🚿", "Free WiFi 📶", "Attached Bathroom 🚽", "Clean Linens 🛏️"]
+                images: ["🪟", "🛏️", "🌿"],
+                amenities: [
+                    { name: "Ceiling Fan", icon: "🌀" },
+                    { name: "Hot Water", icon: "🚿" },
+                    { name: "Free WiFi", icon: "📶" },
+                    { name: "Attached Bathroom", icon: "🚽" },
+                    { name: "Fresh Linens", icon: "🧺" }
+                ]
             },
             {
                 id: 3,
                 name: "Premium Family Suite",
-                description: "Our largest and most luxurious suite designed for families. Features separate living area, spacious bedroom, modern amenities, and beautiful views. Perfect for extended stays.",
-                price: 2500,
-                capacity: 6,
-                size: 600,
+                shortDesc: "Luxurious suite with separate living area",
+                description: "Our crown jewel, the Premium Family Suite offers unparalleled luxury and space. This expansive suite features a separate living area, spacious bedroom, premium amenities, and stunning views. Ideal for extended stays and families seeking the ultimate in comfort and elegance.",
+                price: "₹2,500",
+                capacity: "6 guests",
+                size: "600 sq ft",
                 bed: "3 Double Beds",
                 icon: "🏠",
-                available: true,
-                amenities: ["Air Conditioning ❄️", "Hot Water 🚿", "Free WiFi 📶", "TV 📺", "Attached Bathroom 🚽", "Room Service 🍽️", "Balcony 🌅", "Mini Fridge ❄️"]
+                images: ["🏠", "🛋️", "🌅", "🛏️"],
+                amenities: [
+                    { name: "Air Conditioning", icon: "❄️" },
+                    { name: "Hot Water", icon: "🚿" },
+                    { name: "Free WiFi", icon: "📶" },
+                    { name: "Television", icon: "📺" },
+                    { name: "Attached Bathroom", icon: "🚽" },
+                    { name: "Room Service", icon: "🍽️" },
+                    { name: "Balcony", icon: "🌅" },
+                    { name: "Mini Fridge", icon: "🧊" }
+                ]
             },
             {
                 id: 4,
                 name: "Economy Single Room",
-                description: "Perfect for budget-conscious travelers and pilgrims. Clean, simple room with all essential amenities. Ideal for short stays and those seeking basic comfort.",
-                price: 600,
-                capacity: 1,
-                size: 150,
+                shortDesc: "Simple elegance for solo travelers",
+                description: "Perfect for pilgrims and budget-conscious travelers, our Economy Single Room provides all essentials in a clean, peaceful setting. Though compact, this room is thoughtfully designed to ensure comfort and functionality for short stays.",
+                price: "₹600",
+                capacity: "1 guest",
+                size: "150 sq ft",
                 bed: "1 Single Bed",
                 icon: "🛌",
-                available: true,
-                amenities: ["Ceiling Fan 🌀", "Hot Water 🚿", "Attached Bathroom 🚽", "Clean Linens 🛏️"]
+                images: ["🛌", "🪟", "🌿"],
+                amenities: [
+                    { name: "Ceiling Fan", icon: "🌀" },
+                    { name: "Hot Water", icon: "🚿" },
+                    { name: "Attached Bathroom", icon: "🚽" },
+                    { name: "Fresh Linens", icon: "🧺" }
+                ]
             }
         ];
 
+        let currentSlide = 0;
         let selectedRoom = null;
+        let autoSlideInterval = null;
 
         function renderRooms() {
             const grid = document.getElementById('roomsGrid');
-            const availableRooms = rooms.filter(room => room.available);
-            
-            grid.innerHTML = availableRooms.map(room => `
-                <div class="room-card" onclick="openRoomDetails(${room.id})">
-                    <div class="room-image">
-                        ${room.icon}
-                        ${!room.available ? '<span class="badge">Currently Unavailable</span>' : ''}
-                    </div>
-                    <div class="room-content">
-                        <h3 class="room-title">${room.name}</h3>
-                        <p class="room-description">${room.description.substring(0, 120)}...</p>
-                        
-                        <div class="room-details">
-                            <div class="room-info">
-                                <span>👥</span>
-                                <span>Sleeps ${room.capacity} guest${room.capacity > 1 ? 's' : ''}</span>
-                            </div>
-                            <div class="room-info">
-                                <span>📏</span>
-                                <span>${room.size} sq ft</span>
-                            </div>
-                            <div class="room-info">
-                                <span>🛏️</span>
-                                <span>${room.bed}</span>
-                            </div>
+            grid.innerHTML = rooms.map(room => `
+         <div class="room-card" onclick="openRoomDetails(${room.id})">
+                <div class="room-card-image">
+                    ${room.icon}
+                </div>
+                <div class="room-card-content">
+                    <h3 class="room-card-title">${room.name}</h3>
+                    <p class="room-card-description">${room.shortDesc}</p>
+                    <div class="room-card-footer">
+                        <div class="room-price">
+                            <span class="price-label">From</span>
+                            <span class="price-amount">${room.price}</span>
+                            <span class="price-period">per night</span>
                         </div>
-
-                        <div class="room-footer">
-                            <div class="price">
-                                <span class="price-label">Starting from</span>
-                                <span class="price-amount">₹${room.price}</span>
-                                <span class="price-period">per night</span>
-                            </div>
-                            <button class="btn btn-primary">View Details</button>
-                        </div>
+                        <button class="btn-view">View Details</button>
                     </div>
                 </div>
-            `).join('');
+            </div>
+        `).join('');
         }
 
+        // Open room details modal
         function openRoomDetails(roomId) {
             selectedRoom = rooms.find(r => r.id === roomId);
             if (!selectedRoom) return;
 
             document.getElementById('modalRoomName').textContent = selectedRoom.name;
-            document.getElementById('modalRoomImage').textContent = selectedRoom.icon;
-            document.getElementById('modalRoomDescription').textContent = selectedRoom.description;
-            document.getElementById('modalRoomCapacity').textContent = `Sleeps up to ${selectedRoom.capacity} guests`;
-            document.getElementById('modalRoomSize').textContent = `${selectedRoom.size} sq ft`;
-            document.getElementById('modalRoomBed').textContent = selectedRoom.bed;
+            document.getElementById('modalDescription').textContent = selectedRoom.description;
+            document.getElementById('modalPrice').textContent = selectedRoom.price;
 
-            const amenitiesGrid = document.getElementById('modalAmenities');
-            amenitiesGrid.innerHTML = selectedRoom.amenities.map(amenity => {
-                const parts = amenity.split(' ');
-                const icon = parts[parts.length - 1];
-                const name = parts.slice(0, -1).join(' ');
-                return `
-                    <div class="amenity-item">
-                        <span class="amenity-icon">${icon}</span>
-                        <span>${name}</span>
-                    </div>
-                `;
-            }).join('');
+            // Render carousel
+            const track = document.getElementById('carouselTrack');
+            track.innerHTML = selectedRoom.images.map(img => `
+            <div class="carousel-slide">${img}</div>
+        `).join('');
 
+            // Render indicators
+            const indicators = document.getElementById('indicators');
+            indicators.innerHTML = selectedRoom.images.map((_, i) => `
+            <div class="indicator ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></div>
+        `).join('');
+
+            // Render specs
+            const specs = document.getElementById('modalSpecs');
+            specs.innerHTML = `
+            <div class="spec-item">
+                <div class="spec-icon">👥</div>
+                <div class="spec-content">
+                    <div class="spec-label">Capacity</div>
+                    <div class="spec-value">${selectedRoom.capacity}</div>
+                </div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-icon">📏</div>
+                <div class="spec-content">
+                    <div class="spec-label">Size</div>
+                    <div class="spec-value">${selectedRoom.size}</div>
+                </div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-icon">🛏️</div>
+                <div class="spec-content">
+                    <div class="spec-label">Bed Type</div>
+                    <div class="spec-value">${selectedRoom.bed}</div>
+                </div>
+            </div>
+        `;
+
+            // Render amenities
+            const amenities = document.getElementById('modalAmenities');
+            amenities.innerHTML = selectedRoom.amenities.map(a => `
+            <div class="amenity-item">
+                <div class="amenity-icon">${a.icon}</div>
+                <div class="amenity-name">${a.name}</div>
+            </div>
+        `).join('');
+
+            // Set dates
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('checkIn').min = today;
             document.getElementById('checkOut').min = today;
             document.getElementById('availabilityResult').innerHTML = '';
 
+            currentSlide = 0;
+            updateCarousel();
+            startAutoSlide();
+
             document.getElementById('roomModal').classList.add('active');
         }
 
+        // Close modal
         function closeModal() {
             document.getElementById('roomModal').classList.remove('active');
+            stopAutoSlide();
             selectedRoom = null;
         }
 
-        function checkAvailability() {
+        // Carousel functions
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((ind, i) => {
+                ind.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            if (!selectedRoom) return;
+            currentSlide = (currentSlide + 1) % selectedRoom.images.length;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            if (!selectedRoom) return;
+            currentSlide = (currentSlide - 1 + selectedRoom.images.length) % selectedRoom.images.length;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+        }
+
+        function resetAutoSlide() {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+
+        // Pause on hover
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('carousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', stopAutoSlide);
+                carousel.addEventListener('mouseleave', startAutoSlide);
+            }
+        });
+
+        // Check availability
+        function checkAvailability(event) {
+            event.preventDefault();
+
             const checkIn = document.getElementById('checkIn').value;
             const checkOut = document.getElementById('checkOut').value;
             const resultDiv = document.getElementById('availabilityResult');
-
-            if (!checkIn || !checkOut) {
-                alert('Please select both check-in and check-out dates');
-                return;
-            }
 
             if (new Date(checkOut) <= new Date(checkIn)) {
                 alert('Check-out date must be after check-in date');
@@ -870,27 +1125,46 @@
             }
 
             const nights = Math.ceil((new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24));
-            const totalPrice = nights * selectedRoom.price;
+            const priceNum = parseInt(selectedRoom.price.replace(/[^0-9]/g, ''));
+            const total = nights * priceNum;
 
             resultDiv.innerHTML = `
-                <div class="availability-result available">
-                    <span style="font-size: 1.5rem;">✓</span>
-                    <div>
-                        <div>Room is available for ${nights} night${nights > 1 ? 's' : ''}!</div>
-                        <div style="margin-top: 0.5rem; font-size: 1.2rem;">Total: ₹${totalPrice.toLocaleString('en-IN')}</div>
-                        <div style="margin-top: 0.3rem; font-size: 0.9rem; opacity: 0.8;">Contact us to confirm your booking</div>
-                    </div>
-                </div>
-            `;
+            <div class="availability-message">
+                <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">✓ Available</div>
+                <div>${nights} night${nights > 1 ? 's' : ''} • Total: ₹${total.toLocaleString('en-IN')}</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Contact us to confirm your booking</div>
+            </div>
+        `;
         }
 
-        document.getElementById('roomModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
+        // Close modal on outside click
+        document.getElementById('roomModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
         });
 
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('carousel');
+
+            carousel.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            carousel.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }
+
+        // Initialize
         renderRooms();
     </script>
-</body>
-</html>
+<body>
